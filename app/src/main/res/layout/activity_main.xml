@@ -193,6 +193,7 @@
                     android:background="@drawable/menu_element_color"/>
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:background="@drawable/menu_element_shape"
