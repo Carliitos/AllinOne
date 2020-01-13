@@ -147,27 +147,24 @@ public class Calculadora extends AppCompatActivity {
     void addnumber(Integer num){
         restext.setText(restext.getText()+num.toString());
     }
-    void addsimbolo(String simbolo){
-        if(!simbolo.equals("=")){
-            operador = simbolo;
-            if(xifra1==null){
-                xifra1 = Integer.parseInt(restext.getText().toString());
-                restext.setText("");}
-        }else{
-
-                // else if(xifra2 == null){
-            //    xifra2 = Integer.parseInt(restext.getText().toString());
-            //}
-            if(xifra2 == null){
-                xifra2 = Integer.parseInt(restext.getText().toString());
-                if(operador.equals("+")){
-                    Log.d("MyApp","Xifra 1"+xifra1);
-                    Log.d("MyApp","Xifra 2"+xifra2);
-                    Integer result = xifra1+xifra2;
-                    restext.setText(result+"");
-                    xifra1 = null;
-                    xifra2 = null;
+    void addsimbolo(String simbolo) {
+        if (xifra2 == null) {
+            xifra2 = Integer.parseInt(restext.getText().toString());
+            if (operador.equals("+")) {
+                Integer result = xifra1 + xifra2;
+                restext.setText(result + "");
+                xifra1 = null;
+                xifra2 = null;
+            }
+        } else {
+            if (simbolo.equals("=")) {
+                operador = simbolo;
+                if (xifra1 == null) {
+                    xifra1 = Integer.parseInt(restext.getText().toString());
+                    restext.setText("");
                 }
+
+
             }
         }
     }
