@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout calculadora;
     RelativeLayout todo;
     RelativeLayout password;
+    RelativeLayout reminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         calculadora = findViewById(R.id.calculadora);
         todo = findViewById(R.id.todo);
+        reminder = findViewById(R.id.reminder);
 
         password = findViewById(R.id.password);
         calculadora.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ToDo.class));
+            }
+        });
+        reminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Reminder.class));
             }
         });
     }
