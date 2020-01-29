@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "146928319800-7qhao9ap0igjvgcdtau4idcu3jl8085p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.usefulapps.allinone",
+            "certificate_hash": "704e137875834990e09a6b18aa6f4b099111d73e"
+          }
+        },
+        {
           "client_id": "146928319800-cv5l2rjonp57sv0mdk236tm65g0crrgi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
