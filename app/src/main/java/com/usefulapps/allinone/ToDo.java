@@ -50,7 +50,6 @@ public class ToDo extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Object value = dataSnapshot.getValue();
                     list = new ArrayList<>();
                     int i = 0;
                     ItemCount=0;

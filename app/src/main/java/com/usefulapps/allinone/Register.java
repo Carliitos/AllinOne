@@ -3,6 +3,7 @@ package com.usefulapps.allinone;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ public class Register extends AppCompatActivity {
     EditText email;
     EditText password;
     Button login;
+    EditText passwordRepeated;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,8 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
-
+        password = findViewById(R.id.password);
+        passwordRepeated = findViewById(R.id.passwordrepeated);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,21 +42,21 @@ public class Register extends AppCompatActivity {
                         .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(passwordRepeated.getText().toString().equals(password.getText().toString())){
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d("hola", "createUserWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
-
-                                    //updateUI(user);
+                                    startActivity(new Intent(Register.this, Menu.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w("hola", "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(Register.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                     //updateUI(null);
+                                }}else{
+                                    Toast.makeText(Register.this, "Las contraseñas no coinciden.",
+                                            Toast.LENGTH_SHORT).show();
                                 }
-
-                                // ...
                             }
                         });
             }
