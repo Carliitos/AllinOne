@@ -2,6 +2,9 @@ package com.usefulapps.allinone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,14 @@ public class PasswordGenerator extends AppCompatActivity {
         mayusculasSwitch = findViewById(R.id.mayusculas);
         caractersSwitch = findViewById(R.id.simbolos);
         numerosSwitch = findViewById(R.id.numbers);
+
+        password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager _clipboard = (ClipboardManager) PasswordGenerator.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                _clipboard.setText(password.getText().toString());
+            }
+        });
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override

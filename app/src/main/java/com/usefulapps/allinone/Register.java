@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class Register extends AppCompatActivity {
     EditText password;
     Button login;
     EditText passwordRepeated;
+    RelativeLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class Register extends AppCompatActivity {
         login = findViewById(R.id.login);
         password = findViewById(R.id.password);
         passwordRepeated = findViewById(R.id.passwordrepeated);
+        loading = findViewById(R.id.loading);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,11 +46,13 @@ public class Register extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(passwordRepeated.getText().toString().equals(password.getText().toString())){
+                                    loading.setVisibility(View.VISIBLE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d("hola", "createUserWithEmail:success");
                                     startActivity(new Intent(Register.this, Menu.class));
                                 } else {
+                                    loading.setVisibility(View.INVISIBLE);
                                     // If sign in fails, display a message to the user.
                                     Log.w("hola", "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(Register.this, "Authentication failed.",

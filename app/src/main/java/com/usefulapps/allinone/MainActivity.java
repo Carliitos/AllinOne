@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordRepeated;
     Button login;
     Button register;
-
+    RelativeLayout loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         passwordRepeated = findViewById(R.id.passwordrepeated);
         login = findViewById(R.id.login);
         register = findViewById(R.id.register);
+        loading = findViewById(R.id.loading);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                                loading.setVisibility(View.VISIBLE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                                     //updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
+                                    loading.setVisibility(View.INVISIBLE);
                                     Log.w("Hola", "signInWithEmail:failure", task.getException());
                                     Toast.makeText(MainActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
@@ -80,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
+
+    }
+    public void onDestroy() {
+
+        super.onDestroy();
+        FirebaseAuth.getInstance().signOut();
 
     }
 }

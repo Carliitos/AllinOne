@@ -15,7 +15,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/cerrar"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/signout" />
+            <TextView
+                android:id="@+id/user"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenid@"
+                android:textStyle="bold"
+                android:textColor="#292828"
+                android:layout_centerVertical="true"
+                android:layout_margin="20dp"
+                /></RelativeLayout>
             <RelativeLayout
                 android:id="@+id/calculadora"
                 android:layout_width="match_parent"
@@ -24,6 +50,7 @@
                 android:layout_margin="10dp"
                 android:elevation="3dp"
                 >
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,7 +102,7 @@
                     android:layout_height="10dp"
                     android:layout_alignParentBottom="true"
                     android:translationZ="-1dp"
-                    android:background="@drawable/menu_element_color"/>
+                    android:background="@drawable/menu_element_2"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -104,7 +131,7 @@
                     android:layout_height="10dp"
                     android:layout_alignParentBottom="true"
                     android:translationZ="-1dp"
-                    android:background="@drawable/menu_element_color"/>
+                    android:background="@drawable/menu_element_3"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/reminder"
@@ -134,7 +161,7 @@
                     android:layout_height="10dp"
                     android:layout_alignParentBottom="true"
                     android:translationZ="-1dp"
-                    android:background="@drawable/menu_element_color"/>
+                    android:background="@drawable/menu_element_4"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -163,7 +190,7 @@
                     android:layout_height="10dp"
                     android:layout_alignParentBottom="true"
                     android:translationZ="-1dp"
-                    android:background="@drawable/menu_element_color"/>
+                    android:background="@drawable/menu_element_5"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
