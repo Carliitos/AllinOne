@@ -18,6 +18,8 @@ public class Menu extends AppCompatActivity {
     RelativeLayout todo;
     RelativeLayout password;
     RelativeLayout reminder;
+    RelativeLayout weather;
+    RelativeLayout news;
     TextView user;
     ImageView cerrar;
 
@@ -29,6 +31,8 @@ public class Menu extends AppCompatActivity {
         calculadora = findViewById(R.id.calculadora);
         todo = findViewById(R.id.todo);
         reminder = findViewById(R.id.reminder);
+        weather = findViewById(R.id.weather);
+        news = findViewById(R.id.news);
         cerrar = findViewById(R.id.cerrar);
         user = findViewById(R.id.user);
         FirebaseUser logeduser = FirebaseAuth.getInstance().getCurrentUser();
@@ -63,15 +67,17 @@ public class Menu extends AppCompatActivity {
                 startActivity(new Intent(Menu.this, Reminder.class));
             }
         });
-
-        cerrar.setOnClickListener(new View.OnClickListener() {
+        weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(Menu.this, MainActivity.class));
+                startActivity(new Intent(Menu.this, Weather.class));
             }
         });
-
-
+        news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Menu.this, News.class));
+            }
+        });
     }
 }

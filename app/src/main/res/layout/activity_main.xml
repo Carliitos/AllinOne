@@ -164,6 +164,7 @@
                     android:background="@drawable/menu_element_4"/>
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/weather"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:background="@drawable/menu_element_shape"
@@ -177,14 +178,15 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
                     android:layout_marginRight="30dp"
-                    android:text="WEATHER APP"/>
+                    android:text="WEATHER"
+                    android:textSize="25sp" />
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
@@ -192,34 +194,37 @@
                     android:translationZ="-1dp"
                     android:background="@drawable/menu_element_5"/>
             </RelativeLayout>
+
             <RelativeLayout
+                android:id="@+id/news"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@drawable/menu_element_shape"
                 android:layout_margin="10dp"
-                android:elevation="3dp"
-                >
+                android:background="@drawable/menu_element_shape"
+                android:elevation="3dp">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/newspaper"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
-                    />
+                    android:src="@drawable/newspaper" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
                     android:layout_marginRight="30dp"
-                    android:text="NEWS APP"/>
+                    android:text="NEWS APP"
+                    android:textSize="25sp" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
                     android:layout_alignParentBottom="true"
-                    android:translationZ="-1dp"
-                    android:background="@drawable/menu_element_color"/>
+                    android:background="@drawable/menu_element_color"
+                    android:translationZ="-1dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/password"
