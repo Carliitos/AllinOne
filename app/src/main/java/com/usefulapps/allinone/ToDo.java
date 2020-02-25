@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import static java.sql.DriverManager.println;
 
 public class ToDo extends AppCompatActivity {
-    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     Button button;
     EditText inputText;
     ListView listView;
@@ -44,8 +44,7 @@ public class ToDo extends AppCompatActivity {
         listView=findViewById(R.id.listView);
         list = new ArrayList<>();
 
-        DatabaseReference ref=
-                FirebaseDatabase.getInstance().getReference("TodoItem").child(currentFirebaseUser.getUid());
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("TodoItem").child(currentFirebaseUser.getUid());
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -70,12 +69,14 @@ public class ToDo extends AppCompatActivity {
 
         });
     }
+
     public void addElement(String mensaje){
         list.add(mensaje);
         ArrayAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,list);
         listView.setAdapter(adapter);
         inputText.setText("");
     }
+
     public void onClickAdd(View v){
 
         String text = inputText.getText().toString();

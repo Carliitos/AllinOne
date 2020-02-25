@@ -20,6 +20,7 @@ public class Menu extends AppCompatActivity {
     RelativeLayout reminder;
     RelativeLayout weather;
     RelativeLayout news;
+    RelativeLayout beenthere;
     TextView user;
     ImageView cerrar;
 
@@ -33,6 +34,7 @@ public class Menu extends AppCompatActivity {
         reminder = findViewById(R.id.reminder);
         weather = findViewById(R.id.weather);
         news = findViewById(R.id.news);
+        beenthere = findViewById(R.id.beenthere);
         cerrar = findViewById(R.id.cerrar);
         user = findViewById(R.id.user);
         FirebaseUser logeduser = FirebaseAuth.getInstance().getCurrentUser();
@@ -77,6 +79,12 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Menu.this, News.class));
+            }
+        });
+        beenthere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Menu.this, BeenThere.class));
             }
         });
     }
