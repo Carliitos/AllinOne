@@ -44,6 +44,7 @@ public class Menu extends AppCompatActivity {
         user.setText("Bienvenid@ "+logeduser.getEmail().substring(0,pos));
 
         password = findViewById(R.id.password);
+
         calculadora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

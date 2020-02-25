@@ -3,6 +3,7 @@ package com.usefulapps.allinone;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,8 +31,8 @@ public class ToDo extends AppCompatActivity {
     EditText inputText;
     ListView listView;
     ArrayList<String> list;
-    Integer ItemCount = 0; //Items que ha insertado el usuario
-    private DatabaseReference mDatabase;
+    Integer ItemCount = 0;
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class ToDo extends AppCompatActivity {
         inputText=findViewById(R.id.inputText);
         listView=findViewById(R.id.listView);
         list = new ArrayList<>();
+        lv=findViewById(R.id.listView);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("TodoItem").child(currentFirebaseUser.getUid());
         ref.addValueEventListener(new ValueEventListener() {
@@ -63,10 +65,29 @@ public class ToDo extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
             }
 
+        });
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                System.out.println(lv.getItemAtPosition(position).toString());
+                FirebaseDatabase.getInstance().getReference("TodoItem").child(currentFirebaseUser.getUid())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    if (snapshot.getValue().equals((lv.getItemAtPosition(position)).toString())){
+                                        snapshot.getRef().removeValue();
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+            }
         });
     }
 
@@ -82,10 +103,6 @@ public class ToDo extends AppCompatActivity {
         String text = inputText.getText().toString();
 
         if(!text.equals("")){
-            //list.add(text);
-            //ArrayAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,list);
-            //listView.setAdapter(adapter);
-            //inputText.setText("");
 
             final String userName = currentFirebaseUser.getUid();
             ItemCount++;
