@@ -88,5 +88,12 @@ public class Menu extends AppCompatActivity {
                 startActivity(new Intent(Menu.this, BeenThere.class));
             }
         });
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(Menu.this, MainActivity.class));
+            }
+        });
     }
 }
